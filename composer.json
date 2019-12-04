@@ -1,0 +1,27 @@
+{
+    "name": "skrip42/chron-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony Chron-bundle",
+    "keywords": [],
+    "homepage": "https://symfony.com",
+    "license": "MIT",
+    "authors": [
+        "name": "skrip",
+        "email": "skrip42@gmail.com"
+    ],
+    "require": {
+        "php": "^7.3",
+        "symfony/config": "^4.4|^5.0",
+        "symfony/dependency-injection": "^4.4|^5.0"
+    },
+    "require-dev": {
+        "doctrine/doctrine-bundle": "^1.5|^2.0",
+        "symfony/console": "^4.4|^5.0",
+        "symfony/yaml": "^4.4|^5.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Skrip42\\Bundle\\ChronBundle\\":""
+        }
+    }
+}
