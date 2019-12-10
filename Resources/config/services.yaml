@@ -1,0 +1,33 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Skrip42\Bundle\ChronBundle\Repository\ScheduleRepository:
+        class: Skrip42\Bundle\ChronBundle\Repository\ScheduleRepository
+        tags:
+            - { name: doctrine.repository_service }
+
+    Skrip42\Bundle\ChronBundle\Services\Chron:
+        class: Skrip42\Bundle\ChronBundle\Services\Chron
+
+    Skrip42\Bundle\ChronBundle\Command\ChronRunCommand:
+        class: Skrip42\Bundle\ChronBundle\Command\ChronRunCommand
+        tags:
+            - { name: console.command }
+    Skrip42\Bundle\ChronBundle\Command\ChronAddCommand:
+        class: Skrip42\Bundle\ChronBundle\Command\ChronAddCommand
+        tags:
+            - { name: console.command }
+    Skrip42\Bundle\ChronBundle\Command\ChronListCommand:
+        class: Skrip42\Bundle\ChronBundle\Command\ChronListCommand
+        tags:
+            - { name: console.command }
+    Skrip42\Bundle\ChronBundle\Command\ChronOptimizeCommand:
+        class: Skrip42\Bundle\ChronBundle\Command\ChronOptimizeCommand
+        tags:
+            - { name: console.command }
+    Skrip42\Bundle\ChronBundle\Command\ChronClosestCommand:
+        class: Skrip42\Bundle\ChronBundle\Command\ChronClosestCommand
+        tags:
+            - { name: console.command }

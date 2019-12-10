@@ -5,9 +5,9 @@ namespace Skrip42\Bundle\ChronBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ScheduleRepository")
+ * @ORM\Entity(repositoryClass="Skrip42\Bundle\ChronBundle\Repository\ScheduleRepository")
  */
-class Schedule implements ScheduleInterface
+class Schedule
 {
     /**
      * @ORM\Id()

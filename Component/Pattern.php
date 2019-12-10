@@ -91,11 +91,11 @@ class Pattern
     /**
      * get closest date of pattern
      *
-     * @param int $num
+     * @param ?int $num
      *
      * @return array
      */
-    public function getClosest(int $num) : array
+    public function getClosest(int $num = 1) : array
     {
         $result = [];
         $date = new DateTime('now');
@@ -147,10 +147,10 @@ class Pattern
                     while ($this->parts['hourse']->valid()) {
                         while ($this->parts['minute']->valid()) {
                             $result[] = $this->parts['year']->current()
-                                . '-' . $this->parts['month']->current()
-                                . '-' . $this->parts['compileDay']->current()
-                                . ' ' . $this->parts['hourse']->current()
-                                . ':' . $this->parts['minute']->current();
+                                . '-' . $this->fill($this->parts['month']->current(), 2)
+                                . '-' . $this->fill($this->parts['compileDay']->current(), 2)
+                                . ' ' . $this->fill($this->parts['hourse']->current(), 2)
+                                . ':' . $this->fill($this->parts['minute']->current(), 2);
                             if (count($result) >= $num) {
                                 return $result;
                             }
@@ -182,5 +182,15 @@ class Pattern
             }
         }
         return $result;
+    }
+
+    private function fill(string $val, int $pos)
+    {
+        if (($len = strlen($val)) < $pos) {
+            for ($i = $pos - $len; $i > 0; $i--) {
+                $val = '0' . $val;
+            }
+        }
+        return $val;
     }
 }

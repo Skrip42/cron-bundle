@@ -13,9 +13,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Skrip42\Bundle\ChronBundle\Services\Chron;
 use DateTime;
 
-class ScheduleRunCommand extends Command
+class ChronRunCommand extends Command
 {
-    protected static $defaultName = 'app:schedule-run';
+    protected static $defaultName = 'chron:run';
 
     protected $scheduler;
 
@@ -41,7 +41,6 @@ class ScheduleRunCommand extends Command
 
         foreach ($schedules as $schedule) {
             $command = explode(' ', $schedule->getCommand());
-            dump($command);
             $ex = $this->getApplication()->find($command[0]);
             $arguments = [
                 'command' => $command[0]
@@ -54,11 +53,13 @@ class ScheduleRunCommand extends Command
                 }
             }
             $greetInput = new ArrayInput($arguments);
+            $output->writeln('executing ' . $command[0] . ':');
             $returnCode = $ex->run($greetInput, $output);
             $schedule->incRunningCounter();
             $schedule->setLastRunning(new DateTime('now'));
-            $this->container->get('doctrine')->getManager()->flush();
         }
+        $this->container->get('doctrine')->getManager()->flush($schedules);
         $io->success('all schedule command executed');
+        return 0;
     }
 }

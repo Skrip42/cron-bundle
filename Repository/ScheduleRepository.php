@@ -26,15 +26,18 @@ class ScheduleRepository extends ServiceEntityRepository
     /**
      * return all schedules
      *
+     * @param bool $all = false get disabled schedule
+     *
      * @return array
      */
-    public function getAll() : array
+    public function getAll(bool $all = false) : array
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.active = 1')
-            ->getQuery()
-            ->getResult()
-        ;
+        $builder = $this->createQueryBuilder('s');
+        if (!$all) {
+            $builder->andWhere('s.active=1');
+        }
+        $builder->orderBy('s.id', 'DESC');
+        return $builder->getQuery()->getResult();
     }
 
     /**
@@ -42,27 +45,34 @@ class ScheduleRepository extends ServiceEntityRepository
      *
      * @param int $limit
      * @param int $offset
+     * @param bool $all = true // get disabled schedule
      *
      * @return array
      */
-    public function getPart(int $limit, int $offset) : array
+    public function getPart(int $limit, int $offset, bool $all = true) : array
     {
-        return $this->createQueryBuilder('s')
+        $builder =  $this->createQueryBuilder('s')
             ->orderBy('s.id', 'DESC')
             ->setFirstResult($offset)
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult();
+            ->setMaxResults($limit);
+        if (!$all) {
+            $builder->andWhere('s.active=1');
+        }
+        return $builder->getQuery()->getResult();
     }
 
     /**
+     * @param bool $all = false // include disabled schedule
+     *
      * @return int
      */
-    public function getCount() : int
+    public function getCount(bool $all = true) : int
     {
-        return $this->createQueryBuilder('s')
-            ->select('count(s.id)')
-            ->getQuery()
-            ->getSingleScalarResult();
+        $builder = $this->createQueryBuilder('s')
+                        ->select('count(s.id)');
+        if (!$all) {
+            $builder->andWhere('s.active=1');
+        }
+        return $builder->getQuery()->getSingleScalarResult();
     }
 }

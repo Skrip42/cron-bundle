@@ -4,10 +4,13 @@
     "description": "Symfony Chron-bundle",
     "keywords": [],
     "homepage": "https://symfony.com",
-    "license": "MIT",
+    "version": "1.0",
+    "license": "proprietary",
     "authors": [
-        "name": "skrip",
-        "email": "skrip42@gmail.com"
+        {
+            "name": "skrip",
+            "email": "skrip42@gmail.com"
+        }
     ],
     "require": {
         "php": "^7.3",
@@ -19,7 +22,8 @@
         "symfony/console": "^4.4|^5.0",
         "symfony/yaml": "^4.4|^5.0"
     },
-    "autoload-dev": {
+    "minimum-stability": "dev",
+    "autoload": {
         "psr-4": {
             "Skrip42\\Bundle\\ChronBundle\\":""
         }
