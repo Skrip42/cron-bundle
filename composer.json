@@ -3,9 +3,9 @@
     "type": "symfony-bundle",
     "description": "Symfony Cron-bundle",
     "keywords": [],
-    "homepage": "https://symfony.com",
-    "version": "1.0",
-    "license": "proprietary",
+    "homepage": "https://github.com/Skrip42/cron-bundle",
+    "version": "v1.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "skrip",
