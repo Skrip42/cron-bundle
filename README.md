@@ -1,4 +1,5 @@
 # cron-bundle
+task scheduler for symfony witch extended syntax similar to cron.
 
 ## install:
 - add `    "repositories": [
@@ -12,14 +13,7 @@
 - create database `php ./bin/console make:migration` and `php ./bin/console doctrine:migration:migrate`
 - add `*       *       *       *       *       ./bin/console cron:run` in you crontab 
 
-## available command:
-- `cron:add` - interactiv adding cron task
-- `cron:closest` - show list of closest task
-- `cron:list` - show list of cron task
-- `cron:optimize` - disable outdated cron tasks
-- `cron:run` - run actual task
-
-## cron syntax:
+## schedule-task syntax:
 task pattern is `{minute}_{house}_{day}_{weekday}_{month}_{year}`
 
 | operant | description | example |
@@ -35,3 +29,54 @@ task pattern is `{minute}_{house}_{day}_{weekday}_{month}_{year}`
 | `(n)` | group of operators | `!(5,10,15)_*_*_*_*_*` - will be executed every minute except 5,10 and 15 minute |
 
 Operators can be combined, for example: `0_0_*/2-1_*_*_*` - will be executed at midnight on odd days.
+
+
+## available command:
+- `cron:add` - interactiv adding cron task
+- `cron:closest` - show list of closest task
+- `cron:list` - show list of cron task
+- `cron:list --all` - show list of all activity status cron task
+- `cron:optimize` - disable outdated cron tasks
+- `cron:run` - run actual task
+- `cron:update $id` - update cron task
+- `cron:toggle $id` - toggle cron task activity
+
+## usage:
+```php
+....... //you namespace declaration
+
+use Skrip42\Bundle\CronBundle\Services\Cron;
+use Skrip42\Bundle\CronBundle\Component\Pattern;
+
+....... //you class declaration
+
+protected $cron; //instance of Cron service
+
+public function __construct(Cron $cron) {
+    $this->cron = $cron
+}
+
+........ //in you method
+$this->cron->getActualOnCurrentTime(); // return array of actual Schedule entity
+$this->cron->optimize(); // disable outdated cron tasks
+$this->cron->closestList($count); // return $count closest task in format: [$id, $command, $c]
+$this->cron->getList($all); // return all schedule task? if $all = true includes disabled task
+$this->cron->addSchedule($patternString, $commandString); // create new schedule task
+$this->cron->toggleSchedule($id); // toggle schedule task activity
+$this->cron->updateSchedule($id, $patternString, $commandString); // update schedule task
+
+$pattern = new Pattern($patternString); // get pattern object
+$pattern->test(new DateTime('NOW')); // test pattern for match date
+$pattern->getClosest($count); //return $count closest date that match pattern
+
+$schedule = reset($this->cron->getList()); // schedule is standart doctrine entity
+$schedule->getId(); //return id
+$schedule->getCommand(); // return command string
+$schedule->setCommand($commandString); // set command string to schedule
+$schedule->getPattern(); // return pattern string
+$schedule->setPattern($patternString); // set pattern string to schedule
+$schedule->toggleActive(); // toggle schedule activity
+
+$this->container->get('doctrine')->getManager()->flush(); // to save change
+........
+```
