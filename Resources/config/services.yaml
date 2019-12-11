@@ -10,6 +10,8 @@ services:
 
     Skrip42\Bundle\CronBundle\Services\Cron:
         class: Skrip42\Bundle\CronBundle\Services\Cron
+    Skrip42\Bundle\CronBundle\Component\Pattern:
+        class: Skrip42\Bundle\CronBundle\Component\Pattern
 
     Skrip42\Bundle\CronBundle\Command\CronRunCommand:
         class: Skrip42\Bundle\CronBundle\Command\CronRunCommand

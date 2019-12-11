@@ -7,6 +7,7 @@ use DateTime;
 use DateTimeZone;
 use Skrip42\Bundle\CronBundle\Repository\ScheduleRepository;
 use Skrip42\Bundle\CronBundle\Component\Pattern;
+use Skrip42\Bundle\CronBundle\Entity\Schedule;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class Cron
@@ -65,7 +66,6 @@ class Cron
 
     public function closestList(int $count = 15): ?array
     {
-        var_export($count);
         $schedules = $this->repository->getAll(false);
         $closestList = [];
         foreach ($schedules as $schedule) {
@@ -85,5 +85,36 @@ class Cron
         );
         $closestList = array_slice($closestList, 0, $count);
         return $closestList;
+    }
+
+    public function getList(bool $all = false): ?array
+    {
+        $schedules = $this->repository->getAll($all);
+        return $schedules;
+    }
+
+    public function addSchedule(string $pattern, string $command)
+    {
+        $schedule = new Schedule();
+        $schedule->setPattern($pattern);
+        $schedule->setCommand($command);
+        $em = $this->container->get('doctrine')->getManager();
+        $em->persist($schedule);
+        $em->flush();
+    }
+
+    public function toggleSchedule(int $id)
+    {
+        $schedule = $this->repository->find($id);
+        $schedule->toggleActive();
+        $this->container->get('doctrine')->getManager()->flush();
+    }
+
+    public function updateSchedule(int $id, string $pattern, string $command)
+    {
+        $schedule = $this->repository->find($id);
+        $schedule->setPattern($pattern);
+        $schedule->setCommand($command);
+        $this->container->get('doctrine')->getManager()->flush();
     }
 }
