@@ -1,8 +1,8 @@
 <?php
-namespace Skrip42\Bundle\ChronBundle\Component\Pattern;
+namespace Skrip42\Bundle\CronBundle\Component\Pattern;
 
 use DateTime;
-use Skrip42\Bundle\ChronBundle\Exception\Patern\PartException;
+use Skrip42\Bundle\CronBundle\Exception\Patern\PartException;
 
 abstract class AbstractPart extends AbstractPartIterator
 {
@@ -84,7 +84,7 @@ abstract class AbstractPart extends AbstractPartIterator
     {
         $this->lexIterator->reset();
         if (is_null($this->pattern) || $this->pattern == '') {
-            throw new InterpException('Паттерн не может оставаться пустым!');
+            throw new InterpException("Pattern can't be empty!");
         }
         $this->values = $this->parse($this->lexIterator->getLexem());
         sort($this->values);
@@ -139,13 +139,13 @@ abstract class AbstractPart extends AbstractPartIterator
             default: //numeric lexem
                 if (!is_numeric($lex)) {
                     throw new PartException(
-                        'Неизвестная лексемма: ' . $lex,
+                        'unknow lexem: ' . $lex,
                         $this->partName
                     );
                 }
                 if (((int) $lex) > max($this->range) || ((int) $lex) < -max($this->range)) {
                     throw new PartException(
-                        $lex . ' - вне диапазона допустиммых значений.',
+                        $lex . ' - number out of available range.',
                         $this->partName
                     );
                 }
@@ -214,7 +214,7 @@ abstract class AbstractPart extends AbstractPartIterator
     {
         if (!is_numeric($r)) {
             throw new PartException(
-                'Нельзя задать диапазон ' . reset($l) . ':' . $r,
+                'Cannot set range: ' . reset($l) . ':' . $r,
                 $this->partName
             );
         }
@@ -233,7 +233,7 @@ abstract class AbstractPart extends AbstractPartIterator
     {
         if (!is_numeric($step)) {
             throw new PartException(
-                'Спава от "/" должно бфть число!',
+                'To the right of "/" should be a number!',
                 $this->partName
             );
         }
@@ -269,7 +269,7 @@ abstract class AbstractPart extends AbstractPartIterator
     {
         if (!is_numeric($add)) {
             throw new PartException(
-                'Спава от "+" должно бфть число!',
+                'To the right of "+" should be a number!',
                 $this->partName
             );
         }
@@ -304,7 +304,7 @@ abstract class AbstractPart extends AbstractPartIterator
     {
         if (!is_numeric($sub)) {
             throw new PartException(
-                'Спава от "-" должно бфть число!',
+                'To the right of "/" should be a number!',
                 $this->partName
             );
         }

@@ -1,5 +1,5 @@
 <?php
-namespace Skrip42\Bundle\ChronBundle\Exception\Pattern;
+namespace Skrip42\Bundle\CronBundle\Exception\Pattern;
 
 use Exception;
 

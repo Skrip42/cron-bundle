@@ -1,7 +1,7 @@
 <?php
-namespace Skrip42\Bundle\ChronBundle\Component\Pattern;
+namespace Skrip42\Bundle\CronBundle\Component\Pattern;
 
-use Skrip42\Bundle\ChronBundle\Exception\Patern\PartException;
+use Skrip42\Bundle\CronBundle\Exception\Patern\PartException;
 
 class YearPart extends AbstractPart
 {
@@ -23,7 +23,7 @@ class YearPart extends AbstractPart
     {
         if (!is_numeric($append)) {
             throw new PartException(
-                'Спава от "+" должно быть число!',
+                'To the right of "+" should be a number!',
                 $this->partName
             );
         }
@@ -43,7 +43,7 @@ class YearPart extends AbstractPart
     {
         if (!is_numeric($sub)) {
             throw new PartException(
-                'Спава от "-" должно быть число!',
+                'To the right of "-" should be a number!',
                 $this->partName
             );
         }

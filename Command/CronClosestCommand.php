@@ -1,6 +1,6 @@
 <?php
 
-namespace Skrip42\Bundle\ChronBundle\Command;
+namespace Skrip42\Bundle\CronBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -11,12 +11,12 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Skrip42\Bundle\ChronBundle\Services\Chron;
+use Skrip42\Bundle\CronBundle\Services\Cron;
 use DateTime;
 
-class ChronClosestCommand extends Command
+class CronClosestCommand extends Command
 {
-    protected static $defaultName = 'chron:closest';
+    protected static $defaultName = 'cron:closest';
 
     protected $scheduler;
 
@@ -24,7 +24,7 @@ class ChronClosestCommand extends Command
 
     protected $perPage = 20;
 
-    public function __construct(Chron $scheduler, ContainerInterface $container)
+    public function __construct(Cron $scheduler, ContainerInterface $container)
     {
         $this->scheduler = $scheduler;
         $this->container = $container;
@@ -33,7 +33,7 @@ class ChronClosestCommand extends Command
 
     protected function configure()
     {
-        $this ->setDescription('print list of chron task')
+        $this ->setDescription('print list of cron task')
               ->addOption(
                   'count',
                   'c',

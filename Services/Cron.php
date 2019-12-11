@@ -1,15 +1,15 @@
 <?php
 
-namespace Skrip42\Bundle\ChronBundle\Services;
+namespace Skrip42\Bundle\CronBundle\Services;
 
 use Doctrine\DBAL\Connection;
 use DateTime;
 use DateTimeZone;
-use Skrip42\Bundle\ChronBundle\Repository\ScheduleRepository;
-use Skrip42\Bundle\ChronBundle\Component\Pattern;
+use Skrip42\Bundle\CronBundle\Repository\ScheduleRepository;
+use Skrip42\Bundle\CronBundle\Component\Pattern;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class Chron
+class Cron
 {
     /**
      * Connection $connection instance of bd connection

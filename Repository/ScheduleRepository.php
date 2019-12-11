@@ -1,8 +1,8 @@
 <?php
 
-namespace Skrip42\Bundle\ChronBundle\Repository;
+namespace Skrip42\Bundle\CronBundle\Repository;
 
-use Skrip42\Bundle\ChronBundle\Entity\Schedule;
+use Skrip42\Bundle\CronBundle\Entity\Schedule;
 
 use DateTime;
 

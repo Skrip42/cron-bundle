@@ -1,5 +1,5 @@
 <?php
-namespace Skrip42\Bundle\ChronBundle\Component;
+namespace Skrip42\Bundle\CronBundle\Component;
 
 use DateTime;
 
@@ -43,12 +43,12 @@ class Pattern
     private function explodePattern()
     {
         list($minute, $hourse, $day, $weekday, $month, $year) = explode('_', $this->pattern);
-        $this->parts['year'] = new Pattern\YearPart($year);
-        $this->parts['month'] = new Pattern\MonthPart($month);
+        $this->parts['year']    = new Pattern\YearPart($year);
+        $this->parts['month']   = new Pattern\MonthPart($month);
         $this->parts['weekday'] = new Pattern\WeekdayPart($weekday);
-        $this->parts['day'] = new Pattern\DayPart($day);
-        $this->parts['hourse'] = new Pattern\HoursePart($hourse);
-        $this->parts['minute'] = new Pattern\MinutePart($minute);
+        $this->parts['day']     = new Pattern\DayPart($day);
+        $this->parts['hourse']  = new Pattern\HoursePart($hourse);
+        $this->parts['minute']  = new Pattern\MinutePart($minute);
     }
 
     /**
@@ -60,12 +60,12 @@ class Pattern
     {
         dump(
             [
-                'minute' => $this->parts['minute']->getValues(),
-                'hourse' => $this->parts['hourse']->getValues(),
-                'day' => $this->parts['day']->getValues(),
+                'minute'  => $this->parts['minute']->getValues(),
+                'hourse'  => $this->parts['hourse']->getValues(),
+                'day'     => $this->parts['day']->getValues(),
                 'weekday' => $this->parts['weekday']->getValues(),
-                'month' => $this->parts['month']->getValues(),
-                'year' => $this->parts['year']->getValues()
+                'month'   => $this->parts['month']->getValues(),
+                'year'    => $this->parts['year']->getValues()
             ]
         );
     }

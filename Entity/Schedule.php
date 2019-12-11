@@ -1,11 +1,11 @@
 <?php
 
-namespace Skrip42\Bundle\ChronBundle\Entity;
+namespace Skrip42\Bundle\CronBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Skrip42\Bundle\ChronBundle\Repository\ScheduleRepository")
+ * @ORM\Entity(repositoryClass="Skrip42\Bundle\CronBundle\Repository\ScheduleRepository")
  */
 class Schedule
 {

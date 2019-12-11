@@ -1,6 +1,6 @@
 <?php
 
-namespace Skrip42\Bundle\ChronBundle\Command;
+namespace Skrip42\Bundle\CronBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -10,18 +10,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Skrip42\Bundle\ChronBundle\Services\Chron;
+use Skrip42\Bundle\CronBundle\Services\Cron;
 use DateTime;
 
-class ChronRunCommand extends Command
+class CronRunCommand extends Command
 {
-    protected static $defaultName = 'chron:run';
+    protected static $defaultName = 'cron:run';
 
     protected $scheduler;
 
     protected $container;
 
-    public function __construct(Chron $scheduler, ContainerInterface $container)
+    public function __construct(Cron $scheduler, ContainerInterface $container)
     {
         $this->scheduler = $scheduler;
         $this->container = $container;

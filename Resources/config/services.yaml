@@ -3,31 +3,31 @@ services:
         autowire: true
         autoconfigure: true
 
-    Skrip42\Bundle\ChronBundle\Repository\ScheduleRepository:
-        class: Skrip42\Bundle\ChronBundle\Repository\ScheduleRepository
+    Skrip42\Bundle\CronBundle\Repository\ScheduleRepository:
+        class: Skrip42\Bundle\CronBundle\Repository\ScheduleRepository
         tags:
             - { name: doctrine.repository_service }
 
-    Skrip42\Bundle\ChronBundle\Services\Chron:
-        class: Skrip42\Bundle\ChronBundle\Services\Chron
+    Skrip42\Bundle\CronBundle\Services\Cron:
+        class: Skrip42\Bundle\CronBundle\Services\Cron
 
-    Skrip42\Bundle\ChronBundle\Command\ChronRunCommand:
-        class: Skrip42\Bundle\ChronBundle\Command\ChronRunCommand
+    Skrip42\Bundle\CronBundle\Command\CronRunCommand:
+        class: Skrip42\Bundle\CronBundle\Command\CronRunCommand
         tags:
             - { name: console.command }
-    Skrip42\Bundle\ChronBundle\Command\ChronAddCommand:
-        class: Skrip42\Bundle\ChronBundle\Command\ChronAddCommand
+    Skrip42\Bundle\CronBundle\Command\CronAddCommand:
+        class: Skrip42\Bundle\CronBundle\Command\CronAddCommand
         tags:
             - { name: console.command }
-    Skrip42\Bundle\ChronBundle\Command\ChronListCommand:
-        class: Skrip42\Bundle\ChronBundle\Command\ChronListCommand
+    Skrip42\Bundle\CronBundle\Command\CronListCommand:
+        class: Skrip42\Bundle\CronBundle\Command\CronListCommand
         tags:
             - { name: console.command }
-    Skrip42\Bundle\ChronBundle\Command\ChronOptimizeCommand:
-        class: Skrip42\Bundle\ChronBundle\Command\ChronOptimizeCommand
+    Skrip42\Bundle\CronBundle\Command\CronOptimizeCommand:
+        class: Skrip42\Bundle\CronBundle\Command\CronOptimizeCommand
         tags:
             - { name: console.command }
-    Skrip42\Bundle\ChronBundle\Command\ChronClosestCommand:
-        class: Skrip42\Bundle\ChronBundle\Command\ChronClosestCommand
+    Skrip42\Bundle\CronBundle\Command\CronClosestCommand:
+        class: Skrip42\Bundle\CronBundle\Command\CronClosestCommand
         tags:
             - { name: console.command }

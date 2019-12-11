@@ -1,5 +1,5 @@
 <?php
-namespace Skrip42\Bundle\ChronBundle\Command;
+namespace Skrip42\Bundle\CronBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -11,16 +11,16 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\CommandLoader\FactoryCommandLoader;
 use Symfony\Component\Console\Question\Question;
-use Skrip42\Bundle\ChronBundle\Services\Chron;
+use Skrip42\Bundle\CronBundle\Services\Cron;
 use DateTime;
 
-class ChronOptimizeCommand extends Command
+class CronOptimizeCommand extends Command
 {
-    protected static $defaultName = 'chron:optimize';
+    protected static $defaultName = 'cron:optimize';
 
     protected $container;
 
-    public function __construct(Chron $scheduler, ContainerInterface $container)
+    public function __construct(Cron $scheduler, ContainerInterface $container)
     {
         $this->scheduler = $scheduler;
         $this->container = $container;
@@ -29,7 +29,7 @@ class ChronOptimizeCommand extends Command
 
     protected function configure()
     {
-        $this ->setDescription('add new chron row');
+        $this ->setDescription('add new cron row');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

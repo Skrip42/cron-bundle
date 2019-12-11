@@ -1,13 +1,13 @@
 <?php
 
-namespace Skrip42\Bundle\ChronBundle\DependencyInjection;
+namespace Skrip42\Bundle\CronBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-class ChronExtension extends Extension
+class CronExtension extends Extension
 {
     /**
      * {@inheritdoc}

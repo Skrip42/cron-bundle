@@ -1,5 +1,5 @@
 <?php
-namespace Skrip42\Bundle\ChronBundle\Component\Pattern;
+namespace Skrip42\Bundle\CronBundle\Component\Pattern;
 
 class LexIterator
 {
