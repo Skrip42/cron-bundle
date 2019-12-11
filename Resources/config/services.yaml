@@ -31,3 +31,11 @@ services:
         class: Skrip42\Bundle\CronBundle\Command\CronClosestCommand
         tags:
             - { name: console.command }
+    Skrip42\Bundle\CronBundle\Command\CronUpdateCommand:
+        class: Skrip42\Bundle\CronBundle\Command\CronUpdateCommand
+        tags:
+            - { name: console.command }
+    Skrip42\Bundle\CronBundle\Command\CronToggleCommand:
+        class: Skrip42\Bundle\CronBundle\Command\CronToggleCommand
+        tags:
+            - { name: console.command }

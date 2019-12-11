@@ -69,11 +69,15 @@ class CronListCommand extends Command
         $table = new Table($output);
         $table->setHeaders(['ID', 'Command', 'Pattern', 'Last running', 'Running counter', 'Active']);
         foreach ($schedules as $schedule) {
+            $date = $schedule->getLastRunning();
+            if (!empty($date)) {
+                $date = $date->format('Y-m-d H:i');
+            }
             $table->addRow([
                 $schedule->getId(),
                 $schedule->getCommand(),
                 $schedule->getPattern(),
-                $schedule->getLastRunning(),
+                $date,
                 $schedule->getRunningCounter(),
                 $schedule->getActive()
             ]);
