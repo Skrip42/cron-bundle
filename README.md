@@ -2,14 +2,7 @@
 task scheduler for symfony witch extended syntax similar to cron.
 
 ## install:
-- add `    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Skrip42/cron-bundle"
-        }
-    ],
-` in you composer.json
-- run `composer require skrip42/cron-bundle @dev
+- run `composer require skrip42/cron-bundle`
 - create database `php ./bin/console make:migration` and `php ./bin/console doctrine:migration:migrate`
 - add `*       *       *       *       *       ./bin/console cron:run` in you crontab 
 
