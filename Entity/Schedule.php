@@ -2,7 +2,9 @@
 
 namespace Skrip42\Bundle\CronBundle\Entity;
 
+use Skrip42\Bundle\CronBundle\Component\Pattern;
 use Doctrine\ORM\Mapping as ORM;
+use DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass="Skrip42\Bundle\CronBundle\Repository\ScheduleRepository")
@@ -44,6 +46,17 @@ class Schedule
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getClosest(): ?string
+    {
+        $pattern = new Pattern($this->pattern);
+        $closest = $pattern->getClosest(1);
+        if (empty($closest)) {
+            return null;
+        } else {
+            return $closest[0];
+        }
     }
 
     public function getCommand(): ?string

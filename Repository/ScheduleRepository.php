@@ -6,9 +6,9 @@ use Skrip42\Bundle\CronBundle\Entity\Schedule;
 
 use DateTime;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query\ResultSetMappingBuilder;
+use Skrip42\AdvancedRepository\AdvancedRepository;
 
 /**
  * @method Schedule|null find($id, $lockMode = null, $lockVersion = null)
@@ -16,7 +16,7 @@ use Doctrine\ORM\Query\ResultSetMappingBuilder;
  * @method Schedule[]    findAll()
  * @method Schedule[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ScheduleRepository extends ServiceEntityRepository
+class ScheduleRepository extends AdvancedRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
