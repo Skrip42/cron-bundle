@@ -3,9 +3,6 @@
 namespace Skrip42\Bundle\CronBundle\Repository;
 
 use Skrip42\Bundle\CronBundle\Entity\Schedule;
-
-use DateTime;
-
 use Skrip42\AdvancedRepository\AdvancedRepository;
 
 /**
@@ -16,11 +13,6 @@ use Skrip42\AdvancedRepository\AdvancedRepository;
  */
 class ScheduleRepository extends AdvancedRepository
 {
-    public function __construct($registry)
-    {
-        parent::__construct($registry, Schedule::class);
-    }
-
     /**
      * return all schedules
      *
