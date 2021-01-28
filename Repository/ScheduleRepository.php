@@ -4,6 +4,7 @@ namespace Skrip42\Bundle\CronBundle\Repository;
 
 use Skrip42\Bundle\CronBundle\Entity\Schedule;
 use Skrip42\AdvancedRepository\AdvancedRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Schedule|null find($id, $lockMode = null, $lockVersion = null)
@@ -13,6 +14,14 @@ use Skrip42\AdvancedRepository\AdvancedRepository;
  */
 class ScheduleRepository extends AdvancedRepository
 {
+    /**
+     * @param string $entityClass The class name of the entity this repository manages
+     */
+    public function __construct(ManagerRegistry $registry, string $entityClass = Schedule::class)
+    {
+        parent::__construct($registry, $entityClass);
+    }
+
     /**
      * return all schedules
      *
