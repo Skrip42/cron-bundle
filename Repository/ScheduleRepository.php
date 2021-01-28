@@ -6,8 +6,6 @@ use Skrip42\Bundle\CronBundle\Entity\Schedule;
 
 use DateTime;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use Skrip42\AdvancedRepository\AdvancedRepository;
 
 /**
@@ -18,7 +16,7 @@ use Skrip42\AdvancedRepository\AdvancedRepository;
  */
 class ScheduleRepository extends AdvancedRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct($registry)
     {
         parent::__construct($registry, Schedule::class);
     }
